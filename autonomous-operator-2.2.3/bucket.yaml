@@ -1,0 +1,51 @@
+apiVersion: couchbase.com/v2
+kind: CouchbaseBucket
+metadata:
+  namespace: couchbase
+  name: user
+  labels:
+    cluster: couchbase-cluster
+  annotations:
+    cluster: couchbase-cluster
+spec:
+  compressionMode: active
+  conflictResolution: seqno
+  enableFlush: false
+  enableIndexReplica: false
+  evictionPolicy: valueOnly
+  ioPriority: high
+  maxTTL: '0'
+  memoryQuota: 100Mi
+  minimumDurability: none # none, majority, majorityAndPersistActive, persistToMajority
+  name: user # override metadata.name
+  replicas: 1 # must 0 - 3
+
+---
+
+apiVersion: couchbase.com/v2
+kind: CouchbaseBucket
+metadata:
+  namespace: couchbase
+  name: order
+  labels:
+    cluster: couchbase-cluster
+  annotations:
+    cluster: couchbase-cluster
+spec:
+  compressionMode: active
+  conflictResolution: seqno
+  enableFlush: false
+  enableIndexReplica: false
+  evictionPolicy: valueOnly
+  ioPriority: high
+  maxTTL: '0'
+  memoryQuota: 100Mi
+  minimumDurability: none # none, majority, majorityAndPersistActive, persistToMajority
+  name: order # override metadata.name
+  replicas: 1 # must 0 - 3
+
+
+
+
+
+

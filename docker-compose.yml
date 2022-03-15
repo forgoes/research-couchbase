@@ -1,0 +1,33 @@
+version: "3.9"
+
+networks:
+  net:
+    name: couchbase-net
+
+services:
+  couchbase-1:
+    image: couchbase:community-7.0.2
+    container_name: couchbase-1
+    volumes:
+      - ./_volumes/couchbase/1:/opt/couchbase/var
+
+  couchbase-2:
+    image: couchbase:community-7.0.2
+    container_name: couchbase-2
+    volumes:
+      - ./_volumes/couchbase/2:/opt/couchbase/var
+
+  couchbase-3:
+    image: couchbase:community-7.0.2
+    container_name: couchbase-3
+    ports:
+      - "8091-8096:8091-8096"
+      - "11210-11211:11210-11211"
+    volumes:
+      - ./_volumes/couchbase/3:/opt/couchbase/var
+
+#    healthcheck:
+#      test: ["CMD-SHELL", "couchbase-cli server-info --cluster=couchbase:8091 --user=Administrator --password=password"]
+#      interval: 7s
+#      timeout: 3s
+#      retries: 7
