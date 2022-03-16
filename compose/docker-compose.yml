@@ -1,0 +1,17 @@
+version: "3.9"
+
+networks:
+  net:
+    name: couchbase-net
+
+services:
+  couchbase:
+    image: couchbase:community-7.0.2
+    container_name: couchbase-3
+    ports:
+      - "8091-8096:8091-8096"
+      - "11210-11211:11210-11211"
+    volumes:
+      - ./_volumes/couchbase/3:/opt/couchbase/var
+    networks:
+      - net

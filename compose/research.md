@@ -1,5 +1,5 @@
 ### Research in container
-docker exec -it couchbase-1 sh
+docker exec -it couchbase sh
 ~ ps -ef --forest
 
 ```shell

@@ -53,7 +53,8 @@ kubectl create -f couchbase-cluster.yaml
 kubectl get pods -l couchbase_cluster=couchbase-cluster --namespace couchbase  
   
 # visit https://console.couchbase-cluster.couchbase:18091/
-# change your password
+# todo: change your password
+# https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-reset-admin-password.html
 
 # todo persist data
 ```
@@ -107,4 +108,12 @@ kubectl delete -f crd.yaml
 cd <operator>
 bin/cbopcfg delete operator --namespace couchbase
 bin/cbopcfg delete admission --namespace couchbase
+```
+
+## Doc
+
+```shell
+# on node failure
+# https://docs.couchbase.com/java-sdk/2.7/failure-considerations.html
+# What to expect during fail over
 ```
