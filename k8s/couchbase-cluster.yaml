@@ -1,0 +1,44 @@
+apiVersion: couchbase.com/v2
+kind: CouchbaseCluster
+metadata:
+  namespace: couchbase
+  name: couchbase-cluster
+  labels:
+    project: research-couchbase
+    cluster: couchbase-cluster
+  annotations:
+    project: research-couchbase
+    cluster: couchbase-cluster
+spec:
+  image: couchbase/server:7.0.2
+  buckets:
+    managed: true
+  security:
+    adminSecret: couchbase-secret
+  servers:
+  - size: 3
+    name: all_services
+    services:
+    - data
+    - index
+    - query
+    - search
+    - eventing
+    - analytics
+  networking:
+    exposedFeatures:
+      - admin
+      - xdcr
+      - client
+    exposeAdminConsole: true
+    adminConsoleServiceTemplate:
+      spec:
+        type: LoadBalancer  # NodePort, LoadBalancer
+    exposedFeatureServiceTemplate:
+      spec:
+        type: LoadBalancer
+    dns:
+      domain: couchbase-cluster.couchbase
+    tls:
+      secretSource:
+        serverSecretName: couchbase-cluster-tls
