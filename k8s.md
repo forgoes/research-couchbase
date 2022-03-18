@@ -1,5 +1,28 @@
 # Deploy couchbase cluster in k8s
 
+## install k8s in ubuntu
+```shell
+
+# reset k8s
+sudo kubeadm reset cleanup-node
+sudo kubeadm init
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# schedule Pods on the control-plane node
+kubectl taint nodes --all node-role.kubernetes.io/master-
+# show
+kubectl cluster-info
+kubectl get nodes
+
+
+
+
+
+```
+
+
 ```shell
 cd k8s
 ```
@@ -51,6 +74,8 @@ kubectl create -f couchbase-cluster.yaml
 
 # get pods
 kubectl get pods -l couchbase_cluster=couchbase-cluster --namespace couchbase  
+# watch pods
+eatch kubectl get pods --all-namespaces 
   
 # visit https://console.couchbase-cluster.couchbase:18091/
 # todo: change your password
