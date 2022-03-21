@@ -1,31 +1,5 @@
 # Deploy couchbase cluster in k8s
 
-## install k8s in ubuntu
-```shell
-
-# reset k8s
-sudo kubeadm reset cleanup-node
-sudo kubeadm init
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-# schedule Pods on the control-plane node
-kubectl taint nodes --all node-role.kubernetes.io/master-
-# show
-kubectl cluster-info
-kubectl get nodes
-
-
-
-
-
-```
-
-
-```shell
-cd k8s
-```
 ## Deployment
 
 ```shell
@@ -61,6 +35,12 @@ cd easy-rsa/easyrsa3
 
 # add 127.0.0.1 couchbase-cluster.couchbase to /etc/hosts
 # trust pki/ca.crt in system
+# sudo apt-get install -y ca-certificates
+# sudo cp ca.crt /usr/local/share/ca-certificates
+# sudo update-ca-certificates
+# https://serverfault.com/questions/880804/can-not-get-rid-of-neterr-cert-common-name-invalid-error-in-chrome-with-self
+# trust ca in google chrome
+
 
 # copy crt,key files or change file path below
 # kubectl create tls secret
@@ -75,8 +55,9 @@ kubectl create -f couchbase-cluster.yaml
 # get pods
 kubectl get pods -l couchbase_cluster=couchbase-cluster --namespace couchbase  
 # watch pods
-eatch kubectl get pods --all-namespaces 
+watch kubectl get pods --all-namespaces 
   
+# add <ip> console.couchbase-cluster.couchbase to /etc/host
 # visit https://console.couchbase-cluster.couchbase:18091/
 # todo: change your password
 # https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-reset-admin-password.html
