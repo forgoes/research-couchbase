@@ -10,7 +10,7 @@ metadata:
     project: research-couchbase
     cluster: couchbase-cluster
 spec:
-  image: couchbase/server:7.0.2
+  image: couchbase/server:7.0.3
   buckets:
     managed: true
   security:
@@ -33,10 +33,10 @@ spec:
     exposeAdminConsole: true
     adminConsoleServiceTemplate:
       spec:
-        type: LoadBalancer  # NodePort, LoadBalancer
+        type: NodePort  # NodePort, LoadBalancer
     exposedFeatureServiceTemplate:
       spec:
-        type: LoadBalancer
+        type: NodePort
     dns:
       domain: couchbase-cluster.couchbase
     tls:
