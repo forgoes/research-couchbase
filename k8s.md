@@ -23,6 +23,7 @@ kubectl get deployments --namespace couchbase
 
 # create couchbase secret & bucket
 kubectl create -f secret.yaml
+# todo not working
 kubectl create -f bucket.yaml
 
 # create TLS Certificates
