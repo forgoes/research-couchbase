@@ -10,7 +10,7 @@ metadata:
     project: research-couchbase
     cluster: couchbase-cluster
 spec:
-  image: couchbase/server:7.0.3
+  image: couchbase/server:7.0.2
   buckets:
     managed: true
   security:
