@@ -1,4 +1,4 @@
-apiVersion: couchbase.com/v2
+apiVersion: v2
 kind: CouchbaseBucket
 metadata:
   namespace: couchbase
@@ -17,10 +17,14 @@ spec:
   maxTTL: '0'
   memoryQuota: 100Mi
   minimumDurability: none # none, majority, majorityAndPersistActive, persistToMajority
-  name: promotion # override metadata.name
-  replicas: 1 # must 0 - 3
-  
-
+  name: promotion
+  replicas: 1
+  scopes:
+    managed: false
+    resources:
+    - kind: CouchbaseScope
+      name: ""
+    selector: {}
 
 
 
