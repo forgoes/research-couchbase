@@ -37,8 +37,6 @@ spec:
     exposedFeatureServiceTemplate:
       spec:
         type: NodePort
-    dns:
-      domain: couchbase-cluster.couchbase
     tls:
       secretSource:
         serverSecretName: couchbase-cluster-tls
