@@ -3,6 +3,7 @@
 ## Deployment
 
 ```shell
+# https://docs.couchbase.com/operator/current/prerequisite-and-setup.html
 # download and unzip Couchbase Autonomous Operator: https://www.couchbase.com/downloads
 # reference: https://docs.couchbase.com/operator/current/overview.html
 
@@ -17,8 +18,6 @@ kubectl create -f namespace.yaml
 # install the operator
 bin/cao create admission --namespace couchbase
 bin/cao create operator --namespace couchbase
-bin/cbopcfg create admission
-bin/cbopcfg create operator --namespace couchbase
 # check the Status of the operator
 kubectl get deployments --namespace couchbase
 
