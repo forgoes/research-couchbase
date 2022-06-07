@@ -19,12 +19,6 @@ spec:
   minimumDurability: none # none, majority, majorityAndPersistActive, persistToMajority
   name: promotion
   replicas: 1
-  scopes:
-    managed: false
-    resources:
-    - kind: CouchbaseScope
-      name: ""
-    selector: {}
 
 
 

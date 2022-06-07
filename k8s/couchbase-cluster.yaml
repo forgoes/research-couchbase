@@ -1,4 +1,11 @@
 apiVersion: couchbase.com/v2
+kind: CouchbaseBucket
+metadata:
+  name: promotion
+spec:
+  memoryQuota: 128Mi
+---
+apiVersion: couchbase.com/v2
 kind: CouchbaseCluster
 metadata:
   namespace: couchbase
