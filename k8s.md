@@ -15,7 +15,9 @@ kubectl create -f crd.yaml
 kubectl create -f namespace.yaml
 
 # install the operator
-bin/cbopcfg create admission --namespace couchbase
+bin/cao create admission --namespace couchbase
+bin/cao create operator --namespace couchbase
+bin/cbopcfg create admission
 bin/cbopcfg create operator --namespace couchbase
 # check the Status of the operator
 kubectl get deployments --namespace couchbase

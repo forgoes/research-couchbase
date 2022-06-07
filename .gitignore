@@ -1,6 +1,5 @@
 .idea/
 _volumes/
-bin/
 node_modules/
 
 ca.crt
