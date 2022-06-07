@@ -114,8 +114,8 @@ kubectl delete -f crd.yaml
 ```shell
 # uninstall Autonomous Operator
 cd <operator>
-bin/cbopcfg delete operator --namespace couchbase
-bin/cbopcfg delete admission --namespace couchbase
+bin/cao delete operator --namespace couchbase
+bin/cao delete admission --namespace couchbase
 ```
 
 ## Doc
