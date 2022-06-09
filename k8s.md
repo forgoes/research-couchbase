@@ -15,17 +15,6 @@ kubectl create -f crd.yaml
 # create namespace
 kubectl create -f namespace.yaml
 
-# install the operator
-bin/cao create admission --namespace couchbase
-bin/cao create operator --namespace couchbase
-# check the Status of the operator
-kubectl get deployments --namespace couchbase
-
-# create couchbase secret & bucket
-kubectl create -f secret.yaml
-# todo not working
-kubectl create -f bucket.yaml
-
 # create TLS Certificates
 # reference: https://docs.couchbase.com/operator/current/tutorial-tls.html 
 git clone https://github.com/OpenVPN/easy-rsa
@@ -51,8 +40,20 @@ kubectl create secret generic couchbase-cluster-tls \
   --from-file ./tls.key \
   --from-file ./ca.crt --namespace couchbase
 
+# install the operator
+bin/cao create admission --namespace couchbase
+bin/cao create operator --namespace couchbase
+# check the Status of the operator
+kubectl get deployments --namespace couchbase
+
+# create couchbase secret & bucket
+kubectl create -f secret.yaml
+
 # kubectl create cluster  
 kubectl create -f couchbase-cluster.yaml
+
+# todo not working
+kubectl create -f bucket.yaml
 
 # get pods
 kubectl get pods -l couchbase_cluster=couchbase-cluster --namespace couchbase  
